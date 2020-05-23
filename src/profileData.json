@@ -1,0 +1,99 @@
+{
+	"landing": {
+		"firstName": "Sumit  ",
+		"lastName": "Rajgure",
+		"phoneNumber": "(+91)9175677502",
+		"bio": "I am a full stack developer with 2 years of experience in bulding scalable, modern web applications.",
+    "email": "sumit.rajgure123@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/sumit-rajgure-bb226b13b",
+	"github": "https://github.com/srajgure"
+	},
+	"experience": [
+		{
+				"position": "Software Developement Intern",
+				"organization": "Symantec",
+				"aboutWork": "Developed an automation framework which is used for testing of Symantec Encryption Products.",
+				"fromDate": "July 2019",
+				"toDate": "December 2019"
+		},
+		{
+			"position": "Web Development Intern",
+			"organization": "GSERED",
+			"aboutWork": "Developed customer experience/stories section for gsered.com with WYSIWYG editor.",
+			"fromDate": "July 2018",
+			"toDate": "December 2018"
+		}
+	],
+	"education": [{
+			"university": "Vishwakarma Institute of Technology, Pune",
+			"degree": "B.Tech Computer Engineering",
+			"gpa": "9.36/10",
+			"fromDate": "August 2016",
+			"toDate": "Present"
+		}
+	],
+	"skills": [
+		{
+			"name": "C/C++"
+		},
+		{
+			"name": "Java"
+		},
+		{
+			"name": "Python"
+		},
+		{
+			"name": "HTML5"
+		},
+		{
+			"name": "CSS/SCSS"
+		},
+		{
+			"name": "JavaScript(ES6)"
+		},
+		{
+			"name": "TypeScript"
+		},
+		{
+			"name": "React"
+		},
+		{
+			"name": "NodeJS"
+		},
+		{
+			"name": "Angular"
+		},
+		{
+			"name": "PHP"
+		}
+	],
+	"projects": [{
+		"title": "Blogging Website",
+		"description": "Developed a modern web-application for blogging with OAuth 2.0 for authentication.",
+		"fromDate": "January 2020",
+		"toDate": "May 2020"
+	},
+	{
+		"title": "Reconstructing Obfuscated Human faces using Conditional GAN",
+		"description": "Implemented Condition GAN to reconstruct distorted human face images.",
+		"fromDate": "January 2019",
+		"toDate": "May 2019"
+	},
+	{
+		"title": "Operating System Simulation Using C++",
+		"description": "Simulated operating system environment using C++ file handling.",
+		"fromDate": "August 2018",
+		"toDate": "December 2018"
+	},
+	{
+		"title": "Student Schedular (Android Application)",
+		"description": "A custom application for student timetable management.",
+		"fromDate": "January 2018",
+		"toDate": "May 2018"
+	}
+	],
+	"interests": {
+		"paragraphOne": "Apart from being a web developer, I enjoy competitive programming and blogging."
+		
+	}
+}
