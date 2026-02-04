@@ -1,35 +1,68 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBriefcase } from '@fortawesome/free-solid-svg-icons';
+import './Experience.css';
 
-class Experience extends Component {
-  constructor(props) {
-    super(props);
+const Experience = ({ experience }) => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
 
-    this.experience = props.experience;
-  }
+  const itemVariants = {
+    hidden: { opacity: 0, x: -30 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.6 }
+    }
+  };
 
-  render() {
-    return(
-      <section className="resume-section p-3 p-lg-5 d-flex align-items-center" id="experience">
-        <div className="w-100">
-          <h2 className="mb-5">Experience</h2>
-          {
-            this.experience.map((exp, index) => (
-              <div key={index} className="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-                <div className="resume-content">
-                  <h3 className="mb-0">{exp.position}</h3>
-                  <div className="subheading mb-3">{exp.organization}</div>
-                  <p>{exp.aboutWork}</p>
-                </div>
-                <div className="resume-date text-md-right">
-                  <span className="text-primary">{exp.fromDate} - {exp.toDate}</span>
-                </div>
+  return (
+    <section id="experience" className="experience-section">
+      <div className="section-container">
+        <h2 className="section-heading">Experience</h2>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="timeline"
+        >
+          {experience.map((exp, index) => (
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              className="timeline-item"
+            >
+              <div className="timeline-icon">
+                <FontAwesomeIcon icon={faBriefcase} />
               </div>
-            ))
-          }
-        </div>
-      </section>
-    );
-  }
-}
+
+              <div className="timeline-content glass-card">
+                <div className="timeline-header">
+                  <h3 className="position-title">{exp.position}</h3>
+                  <span className="date-range">
+                    {exp.fromDate} - {exp.toDate}
+                  </span>
+                </div>
+
+                <h4 className="organization-name">{exp.organization}</h4>
+                <p className="work-description">{exp.aboutWork}</p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
 
 export default Experience;

@@ -1,50 +1,94 @@
-import React, { Component } from 'react';
-import image from '../Assets/profile.jpeg';
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
+import './Sidebar.css';
 
-class Sidebar extends Component {
-  constructor(props) {
-    super(props);
+const Sidebar = ({ sidebarData, activeSection }) => {
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
-    this.sidebarData = props.sidebarData;
-  }
+  const navItems = [
+    { id: 'about', label: 'About' },
+    { id: 'experience', label: 'Experience' },
+    { id: 'education', label: 'Education' },
+    { id: 'skills', label: 'Skills' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'interests', label: 'Interests' }
+  ];
 
-  render() {
-    return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-        <a className="navbar-brand js-scroll-trigger" href="#page-top">
-          <span className="d-block d-lg-none">{this.sidebarData.firstName} {this.sidebarData.lastName}</span>
-          <span className="d-none d-lg-block">
-            <img className="img-fluid img-profile rounded-circle mx-auto mb-2" src={image} alt=""></img>
-          </span>
-        </a>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <a className="nav-link js-scroll-trigger" href="#about">About</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link js-scroll-trigger" href="#experience">Experience</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link js-scroll-trigger" href="#education">Education</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link js-scroll-trigger" href="#skills">Skills</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link js-scroll-trigger" href="#projects">Projects</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link js-scroll-trigger" href="#interests">Interests</a>
-            </li>
-          </ul>
+  return (
+    <nav className="sidebar">
+      <div className="sidebar-content">
+        <div className="profile-section">
+          <div className="profile-avatar">
+            <span className="avatar-text">
+              {sidebarData.firstName.charAt(0)}{sidebarData.lastName.charAt(0)}
+            </span>
+          </div>
+          <h1 className="profile-name">
+            {sidebarData.firstName}
+            <span className="gradient-text">{sidebarData.lastName}</span>
+          </h1>
+          <p className="profile-bio">{sidebarData.bio}</p>
         </div>
-      </nav>
-    );
-  }
-}
+
+        <ul className="nav-menu">
+          {navItems.map((item) => (
+            <li key={item.id}>
+              <button
+                className={`nav-link ${activeSection === item.id ? 'active' : ''}`}
+                onClick={() => scrollToSection(item.id)}
+              >
+                {item.label}
+              </button>
+            </li>
+          ))}
+        </ul>
+
+        <div className="social-links">
+          <a
+            href={`mailto:${sidebarData.email}`}
+            className="social-icon"
+            aria-label="Email"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FontAwesomeIcon icon={faEnvelope} />
+          </a>
+          <a
+            href={`tel:${sidebarData.phoneNumber}`}
+            className="social-icon"
+            aria-label="Phone"
+          >
+            <FontAwesomeIcon icon={faPhone} />
+          </a>
+          <a
+            href={sidebarData.linkedin}
+            className="social-icon"
+            aria-label="LinkedIn"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FontAwesomeIcon icon={faLinkedin} />
+          </a>
+          <a
+            href={sidebarData.github}
+            className="social-icon"
+            aria-label="GitHub"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FontAwesomeIcon icon={faGithub} />
+          </a>
+        </div>
+      </div>
+    </nav>
+  );
+};
 
 export default Sidebar;

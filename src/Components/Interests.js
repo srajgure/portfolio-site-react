@@ -1,22 +1,48 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCode, faPencilAlt, faHeart } from '@fortawesome/free-solid-svg-icons';
+import './Interests.css';
 
-class Interests extends Component {
-  constructor(props) {
-    super(props);
+const Interests = ({ interests }) => {
+  return (
+    <section id="interests" className="interests-section">
+      <div className="section-container">
+        <h2 className="section-heading">Interests</h2>
 
-    this.interests = props.interests;
-  }
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="interests-content glass-card"
+        >
+          <div className="interests-icons">
+            <motion.div
+              className="interest-icon"
+              whileHover={{ scale: 1.1, rotate: 5 }}
+            >
+              <FontAwesomeIcon icon={faCode} />
+            </motion.div>
+            <motion.div
+              className="interest-icon"
+              whileHover={{ scale: 1.1, rotate: -5 }}
+            >
+              <FontAwesomeIcon icon={faPencilAlt} />
+            </motion.div>
+            <motion.div
+              className="interest-icon"
+              whileHover={{ scale: 1.1, rotate: 5 }}
+            >
+              <FontAwesomeIcon icon={faHeart} />
+            </motion.div>
+          </div>
 
-  render() {
-    return(
-      <section className="resume-section p-3 p-lg-5 d-flex align-items-center" id="interests">
-        <div className="w-100">
-          <h2 className="mb-5">Interests</h2>
-          <p>{this.interests.paragraphOne}</p>
-        </div>
-      </section>
-    );
-  }
-}
+          <p className="interests-text">{interests.paragraphOne}</p>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
 
 export default Interests;
